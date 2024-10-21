@@ -12,6 +12,9 @@ DB_NAME=$1
 # Connect to the specified database
 db2 "CONNECT TO $DB_NAME"
 
+db2 "ALTER TABLE PATIENTS 
+ADD COLUMN VECTOR VARBINARY(6200)"
+
 # Read the CSV file line by line
 while IFS=',' read -r patient_id vector_str; do
 
