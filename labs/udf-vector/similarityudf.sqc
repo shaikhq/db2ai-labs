@@ -69,7 +69,8 @@
 
 float dotProduct(float* a, float* b, int size) {
     float sum = 0;
-    for(int i = 0; i < size; i++) {
+    int i;
+    for(i = 0; i < size; i++) {
         sum += a[i] * b[i];
     }
     return sum;
@@ -77,7 +78,8 @@ float dotProduct(float* a, float* b, int size) {
 
 float magnitude(float* a, int size) {
     float sum = 0;
-    for(int i = 0; i < size; i++) {
+    int i;
+    for(i = 0; i < size; i++) {
         sum += a[i] * a[i];
     }
     return sqrt(sum);
@@ -227,7 +229,8 @@ void SQL_API_FN VEC_TO_CHAR(SQLUDF_VARBINARY  *inVec,
     strcpy(string, "[");
 
     // Format each float as a string and concatenate
-    for (int i = 0; i < length_of_array; ++i) {
+    int i;
+    for (i = 0; i < length_of_array; ++i) {
         char buffer[50]; // Increased size for float representation
         sprintf(buffer, "%g, ", array[i]); // Use %g to format as float with original precision
         strcat(string, buffer);
