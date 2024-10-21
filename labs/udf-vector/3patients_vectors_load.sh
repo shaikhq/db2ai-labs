@@ -22,7 +22,7 @@ while IFS=',' read -r patient_id vector_str; do
   vector_str=$(echo $vector_str | sed "s/^['\"]//;s/['\"]$//")
 
   # Construct the SQL update statement
-  sql_update="UPDATE PATIENTS SET VECTOR = CHAR_TO_VEC('$vector_str') WHERE PATIENT_ID = $patient_id"
+  sql_update="UPDATE PATIENTS SET VECTOR = CHAR_TO_VEC($vector_str) WHERE PATIENT_ID = $patient_id"
 
   # Execute the SQL update
   db2 -t "$sql_update"
