@@ -27,7 +27,7 @@ while IFS=',' read -r patient_id vector_str; do
   # Execute the SQL update
   db2 -t "$sql_update"
 
-done < patient_vectors.csv
+done < patients-vectors.csv
 
 # Commit the transaction
 db2 commit

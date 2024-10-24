@@ -45,7 +45,7 @@ SELECT count(*) FROM GOSALES_TRAIN WHERE PROFESSION IS NULL;
 CALL IDAX.LINEAR_REGRESSION('model=GOSALES_LINREG, intable=GOSALES_TRAIN, id=ID, target=PURCHASE_AMOUNT,incolumn=AGE;GENDER;MARITAL_STATUS;PROFESSION, intercept=true');
 
 -- 4a. list trained models
-CALL IDAX.LIST_MODELS('format=short, all=true')
+CALL IDAX.LIST_MODELS('format=short, all=true');
 
 -- 4b. checking the model's learned coefficients
 SELECT VAR_NAME, LEVEL_NAME, VALUE FROM GOSALES_LINREG_MODEL;
@@ -61,7 +61,7 @@ CALL IDAX.IMPUTE_DATA('intable=GOSALES_TEST, method=replace, nominalValue=Marrie
 -- PROFESSION:
 CALL IDAX.IMPUTE_DATA('intable=GOSALES_TEST, method=replace, nominalValue=Other, incolumn=PROFESSION');
 -- 5b. generating predictions
-CALL IDAX.PREDICT_LINEAR_REGRESSION('model=GOSALES_LINREG, intable=GOSALES_TEST, outtable=GOSALES_TEST_PREDICTIONS, id=ID')
+CALL IDAX.PREDICT_LINEAR_REGRESSION('model=GOSALES_LINREG, intable=GOSALES_TEST, outtable=GOSALES_TEST_PREDICTIONS, id=ID');
 -- 5c. checking sample predictions
 SELECT * FROM GOSALES_TEST_PREDICTIONS FETCH FIRST 5 ROWS ONLY;
 
