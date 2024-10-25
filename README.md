@@ -1,14 +1,28 @@
-# db2ml
-training modules for Db2 ML workshop
+# IDUG EMEA 2024 - Db2 Machine Learning Workshop Instructions
 
-# 1. Requesting an IBM id
-- Go to this page and register for an IBMid: [Create an IBMid](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776)
+## 1. Requesting an IBM id
+Go to this page and register for an IBMid: [Create an IBMid](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776)
+
+You'll you fill in a 2-page form and submit the form. It doesn't require any credit card to get an IBM id. 
+
+Complete page 1 of the IBM id request form and click next. 
+![alt text](images/image-16.png)
+
+After you clicking next on page 1, the registration process will send a 7 digit verification token to the email address you entered on page 1. Copy that token and enter this on the 2nd page of the registration form below and click `Submit`.
+
+![alt text](images/image-17.png)
+
+Shortly after you'll receive an email such as the following with a confirmation that your IBM id has been created. 
+
+![alt text](images/image-18.png)
+
+Remember your IBM id and password in a secure place. You'll need them for requesting and accessing a Db2 ML workshop VM. 
 
 It will take a couple minutes to submit the form and get an IBM id. 
 
 Once you have an IBM id and its password, go to the next step. 
 
-# 2. Accessing Your Workshop VM
+## 2. Accessing Your Workshop VM
 Go to workshop attendee's page by either clicking [this](https://techzone.ibm.com/my/workshops/student/6710247b242dbc7351ebe218) or typing on your browser https://ibm.biz/idug2024
 
 
@@ -34,7 +48,7 @@ Clicking the blue console link will launch the following login window to your wo
 
 From this expanded login window, log in as db2inst1 user with the password that your instructor has provided you. 
 
-# 3. Setting up your VM
+## 3. Setting up your VM
 Now, you're inside your VM GUI. 
 
 Open a terminal:
@@ -69,7 +83,7 @@ Wait for 15-20 seconds for reboot to complete. After the reboot finishes, click 
 
 Login to your VM as `db2inst1` using the password that your instructor has given you. 
 
-# 4. Downloading the Workshop Code
+## 4. Downloading the Workshop Code
 
 2. Download lab code from db2ml-labs repo:
 ```shell
