@@ -17,20 +17,20 @@ It will ask you to sign in using your IBM id and password. Enter your IBM creden
 
 you'll be taken to the 
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 
 Next, this process will assign a workshop VM to your IBM id and direct you to your VM environment page as follows:
-![alt text](image-10.png)
+![alt text](images/image-10.png)
 
 
 On the `Your environment` page, scroll down until you see a section called `VM Remote Console`. Click the blue console link. 
 
-![alt text](image-14.png)
+![alt text](images/image-14.png)
 
 
 Clicking the blue console link will launch the following login window to your workshop VM. From this window, click `Open in a new window` to open this in a full-size browser tab, which will be easier to work with. 
 
-![alt text](image-15.png)
+![alt text](images/image-15.png)
 
 From this expanded login window, log in as db2inst1 user with the password that your instructor has provided you. 
 
@@ -38,7 +38,7 @@ From this expanded login window, log in as db2inst1 user with the password that 
 Now, you're inside your VM GUI. 
 
 Open a terminal:
-![alt text](image.png)
+![alt text](images/image.png)
 
  Open `/etc/hosts` file as a root user:
 ```shell
@@ -47,25 +47,25 @@ sudo vi /etc/hosts
 
 The file has the following content:
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 Switch to edit model by pressing `i` in your keyboard. By pressing left arrow in your keyboard, move your cursor to the beginning of the list of server names after `127.0.0.1`. Add to this list `server7`. 
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 In your keyboard, press the `esc` key and then type `:wq`. This will save the update you just made in the `/etc/hosts` file. 
 
 Now, restart the VM by going to the browser tab in your laptop that looks like the following. Click `Reboot`.
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
 You'll see window asking you to confirm that you want to reboot the VM. Confirm by clicking `YES`. 
 
-![alt text](image-7.png)
+![alt text](images/image-7.png)
 
 Wait for 15-20 seconds for reboot to complete. After the reboot finishes, click `Open in a new window` button. 
 
-![alt text](image-8.png)
+![alt text](images/image-8.png)
 
 Login to your VM as `db2inst1` using the password that your instructor has given you. 
 
@@ -81,7 +81,7 @@ git clone https://github.com/shaikhq/db2ml-labs.git
 ls
 ```
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 4. Go to `db2ml-labs` directory:
 ```shell
@@ -93,7 +93,7 @@ cd db2ml-labs
 ls
 ```
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 - `module1-idax` directory has the content of the first lab where you'll use Db2's in-database advanced analytics (IDAX) stored 
 procedures for developing a machine learning (ML) model.
