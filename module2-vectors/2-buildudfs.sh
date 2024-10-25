@@ -10,10 +10,10 @@ fi
 DB_NAME=$1
 
 # pre-compile
-./tools/embprep similarityudf $DB_NAME
+./embprep similarityudf $DB_NAME
 
 # build
-./tools/bldrtn similarityudf $DB_NAME
+./bldrtn similarityudf $DB_NAME
 
 # Connect to the specified database
 db2 "CONNECT TO $DB_NAME"
