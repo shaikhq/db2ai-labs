@@ -85,14 +85,34 @@ Wait for 15-20 seconds for reboot to complete. After the reboot finishes, click 
 
 ![alt text](images/image-8.png)
 
-Login to your VM as `db2inst1` using the password that your instructor has given you. 
+Login to your VM as `db2inst1` using the password that your instructor has given you.
+
 
 ## 4. Downloading the Workshop Code
 
+
 2. Download lab code from db2ml-labs repo:
+
 ```shell
 git clone -b idugmemea2024 --single-branch https://github.com/shaikhq/db2ml-labs.git
 ```
+
+Now, we'll show you the way of copying this line of code from your laptop to the VM. 
+First, copy the text to your laptop's clipboard. 
+![alt text](image-1.png)
+
+Next, switch to the VM window and click the place where you want to paste the copied code. In this case, you'll paste this copied command to the shell windown in the VM:
+
+![alt text](image-2.png)
+
+From the top center of your VM browser window, click the `send text` button below:
+
+![alt text](image-4.png)
+
+You'll see the following `send text` window. Here paste the copied shell command from the clipboard. Click `Fast Send Text` button and close the `Send Text` window by clicking the `x` on the top right corder of the the window. 
+![alt text](image-5.png)
+
+Now, the line of code will be copied to the shell prompt at your VM. Press enter to execute the command, which will download the workshop labs code from git repo to your VM. 
 
 3. Type `ls` to see the git repo folder, `db2ml-labs`, that you just downloaded. 
 ```shell
@@ -118,7 +138,7 @@ procedures for developing a machine learning (ML) model.
 
 - `module2-vectors` directory has the content of the second lab where you'll implement a vector similarity search use case with Db2.
 
-## Misc.
+## Misc - No Action Needed
 Resetting local git repo with remote repo:
 ```shell
 git fetch --all
