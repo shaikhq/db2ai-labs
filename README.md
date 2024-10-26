@@ -23,7 +23,7 @@ It will take a couple minutes to submit the form and get an IBM id.
 Once you have an IBM id and its password, go to the next step. 
 
 ## 2. Accessing Your Workshop VM
-Go to workshop attendee's page by either clicking [this](https://techzone.ibm.com/my/workshops/student/6710247b242dbc7351ebe218) link.
+Go to workshop attendee's page by clicking [this](https://techzone.ibm.com/my/workshops/student/6710247b242dbc7351ebe218) link.
 
 It will ask you to sign in using your IBM id and password. Enter your IBM credentails and log in. After you reach the Workshop Attendee's page, you will see the following form. In this form, enter the workshop access code that you received from your instructor and click `Submit password/access code` button. 
 
@@ -80,11 +80,15 @@ You'll see window asking you to confirm that you want to reboot the VM. Confirm 
 
 ![alt text](images/image-7.png)
 
-Wait for 15-20 seconds for reboot to complete. After the reboot finishes, click `Open in a new window` button. 
+Wait for 15-20 seconds for reboot to complete. Once the reboot completes, click the `Full screen` button to open the VM in a full screen model. In full screen mode, log into the VM as `db2inst1`. 
 
-![alt text](images/image-8.png)
+![alt text](image-6.png)
 
-Login to your VM as `db2inst1` using the password that your instructor has given you.
+From the VM's desktop, go to `Applications` -> `Favorite` -> `Firefox` as follows:
+
+![alt text](image-7.png)
+
+Using firefox, open ibm.biz/idug2024
 
 
 ## 4. Downloading the Workshop Code
@@ -92,40 +96,25 @@ Login to your VM as `db2inst1` using the password that your instructor has given
 
 2. Download lab code from db2ml-labs repo:
 
+Select the following shell command and copy from right clicking and then copying to clipboard. Next, paste the copied command into the terminal in the VM. You can launch the terminal from `Applications` -> `Favorites` -> `Terminal`.
+
 ```shell
-git clone -b idugmemea2024 --single-branch https://github.com/shaikhq/db2ml-labs.git
+git clone -b idugemea2024 --single-branch https://github.com/shaikhq/db2ml-labs.git
 ```
 
-Now, we'll show you the way of copying this line of code from your laptop to the VM. 
-First, copy the text to your laptop's clipboard. 
-![alt text](image-1.png)
-
-Next, switch to the VM window and click the place where you want to paste the copied code. In this case, you'll paste this copied command to the shell windown in the VM:
-
-![alt text](image-2.png)
-
-From the top center of your VM browser window, click the `send text` button below:
-
-![alt text](image-4.png)
-
-You'll see the following `send text` window. Here paste the copied shell command from the clipboard. Click `Fast Send Text` button and close the `Send Text` window by clicking the `x` on the top right corder of the the window. 
-![alt text](image-5.png)
-
-Now, the line of code will be copied to the shell prompt at your VM. Press enter to execute the command, which will download the workshop labs code from git repo to your VM. 
-
-3. Type `ls` to see the git repo folder, `db2ml-labs`, that you just downloaded. 
+Type `ls` to see the git repo folder, `db2ml-labs`, that you just downloaded. 
 ```shell
 ls
 ```
 
 ![alt text](images/image-1.png)
 
-4. Go to `db2ml-labs` directory:
+Go to `db2ml-labs` directory:
 ```shell
 cd db2ml-labs
 ```
 
-5. See the content of `db2ml-labs` directory:
+See the content of `db2ml-labs` directory:
 ```shell
 ls
 ```
@@ -138,6 +127,152 @@ procedures for developing a machine learning (ML) model.
 - `module2-vectors` directory has the content of the second lab where you'll implement a vector similarity search use case with Db2.
 
 # 5 Module 1: Building a Linear Regression Model using in-database machine learning stored procedures at Db2
+
+Navigate to ~/$HOME/db2ml-labs/module1-idax:
+```shell
+cd ~/$HOME/db2ml-labs/module1-idax
+```
+
+At the `module1-idax` folder, run the following script to create the Db2 table and load data into it for the current exercise. 
+
+```shell
+./dbsetup.sh banking
+```
+
+Now, run the following series commands for the current exercise:
+
+**1. Train / Test Split**
+```sql
+CALL IDAX.SPLIT_DATA('intable=GOSALES, id=ID, traintable=GOSALES_TRAIN, testtable=GOSALES_TEST, fraction=0.8, seed=1');
+```
+**1a. Checking the # of rows in TRAIN partition**
+```sql
+SELECT count(*) FROM GOSALES_TRAIN;
+```
+
+**1b. Checking the # of rows in the TEST partition**
+```sql
+SELECT count(*) FROM GOSALES_TEST;
+```
+
+2. Data exploration
+**2a. looking sample rows from the TRAIN partition**
+```sql
+SELECT * FROM GOSALES_TRAIN FETCH FIRST 5 ROWS ONLY;
+```
+
+**2b. generating summary statistics**
+```sql
+CALL IDAX.SUMMARY1000('intable=GOSALES_TRAIN, outtable=GOSALES_TRAIN_SUM1000, incolumn=GENDER;AGE;MARITAL_STATUS;PROFESSION');
+```
+
+**2b. looking at summary statistics of numeric columns**
+```sql
+SELECT * FROM GOSALES_TRAIN_SUM1000_NUM;
+```
+
+**2c. looking at summary statistics of non-numeric columns**
+```sql
+SELECT * FROM GOSALES_TRAIN_SUM1000_CHAR;
+```
+
+**3. Data preprocessing**
+**3a. replacing missing values in the AGE column**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TRAIN, incolumn=AGE, method=mean');
+```
+
+**3b. replacing missing values in the GENDER column**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TRAIN, method=replace, nominalValue=M, incolumn=GENDER');
+```
+
+**3c. replacing missing values in the MARITAL_STATUS column**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TRAIN, method=replace, nominalValue=Married, incolumn=MARITAL_STATUS');
+```
+
+**3d. replacing missing values in the PROFESSION column**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TRAIN, method=replace, nominalValue=Other, incolumn=PROFESSION');
+```
+
+**3e. confirming that the above 4 columns have no more missing values**
+**GENDER column**
+```sql
+SELECT count(*) FROM GOSALES_TRAIN WHERE AGE IS NULL;
+```
+**MARITAL_STATUS:**
+```sql
+SELECT count(*) FROM GOSALES_TRAIN WHERE MARITAL_STATUS IS NULL;
+```
+**PROFESSION:**
+```sql
+SELECT count(*) FROM GOSALES_TRAIN WHERE PROFESSION IS NULL;
+```
+
+**4. Model training**
+```sql
+CALL IDAX.LINEAR_REGRESSION('model=GOSALES_LINREG, intable=GOSALES_TRAIN, id=ID, target=PURCHASE_AMOUNT,incolumn=AGE;GENDER;MARITAL_STATUS;PROFESSION, intercept=true');
+```
+
+**4a. list trained models**
+```sql
+CALL IDAX.LIST_MODELS('format=short, all=true');
+```
+
+**4b. checking the model's learned coefficients**
+```sql
+SELECT VAR_NAME, LEVEL_NAME, VALUE FROM GOSALES_LINREG_MODEL;
+```
+
+**5. Generating prediction with the trained model**
+**5a. filling in missing values in the test dataset, GOSALES_TEST**
+**AGE:**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TEST, method=mean, incolumn=AGE');
+```
+**GENDER:**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TEST, method=replace, nominalValue=M, incolumn=GENDER');
+```
+**MARITAL_STATUS**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TEST, method=replace, nominalValue=Married, incolumn=MARITAL_STATUS');
+```
+**PROFESSION**
+```sql
+CALL IDAX.IMPUTE_DATA('intable=GOSALES_TEST, method=replace, nominalValue=Other, incolumn=PROFESSION');
+```
+**5b. generating predictions**
+```sql
+CALL IDAX.PREDICT_LINEAR_REGRESSION('model=GOSALES_LINREG, intable=GOSALES_TEST, outtable=GOSALES_TEST_PREDICTIONS, id=ID');
+```
+**5c. checking sample predictions**
+```sql
+SELECT * FROM GOSALES_TEST_PREDICTIONS FETCH FIRST 5 ROWS ONLY;
+```
+
+**6. Model evaluation**
+**6a. MSE**
+```sql
+CALL IDAX.MSE('intable=GOSALES_TEST, id=ID, target=PURCHASE_AMOUNT, resulttable=GOSALES_TEST_PREDICTIONS, resulttarget=PURCHASE_AMOUNT');
+```
+**6b. MAE**
+```sql
+CALL IDAX.MAE('intable=GOSALES_TEST, id=ID, target=PURCHASE_AMOUNT, resulttable=GOSALES_TEST_PREDICTIONS, resulttarget=PURCHASE_AMOUNT');
+```
+**6c. MAPE:**
+```sql
+SELECT avg(abs(A.PURCHASE_AMOUNT - B.PURCHASE_AMOUNT) / A.PURCHASE_AMOUNT * 100) AS MAPE FROM GOSALES_TEST AS A, GOSALES_TEST_PREDICTIONS AS B WHERE A.ID = B.ID;
+```
+
+**7. Dropping the model**
+```sql
+CALL IDAX.DROP_MODEL('model=GOSALES_LINREG');
+CALL IDAX.LIST_MODELS('format=short, all=true');
+```
+
 
 
 
