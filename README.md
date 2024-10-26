@@ -91,7 +91,7 @@ Login to your VM as `db2inst1` using the password that your instructor has given
 
 2. Download lab code from db2ml-labs repo:
 ```shell
-git clone -b branch_name --idugemea2024 https://github.com/shaikhq/db2ml-labs.git
+git clone -b idugmemea2024 --single-branch https://github.com/shaikhq/db2ml-labs.git
 ```
 
 3. Type `ls` to see the git repo folder, `db2ml-labs`, that you just downloaded. 
