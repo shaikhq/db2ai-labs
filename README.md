@@ -273,6 +273,55 @@ CALL IDAX.DROP_MODEL('model=GOSALES_LINREG');
 CALL IDAX.LIST_MODELS('format=short, all=true');
 ```
 
+## 6. Module 2 - Vectors with Db2
+**6a. Navigate to module 2 lab folder**
+****
+```shell
+cd $HOME/db2ml-labs/module2-vectors
+```
+
+**6b. setup patient table - create table and load data**
+```shell
+./1-dbsetup.sh sample
+```
+
+**6c. build and register vector user-defined functions (UDFs)**
+```shell
+./2-buildudfs.sh sample
+```
+
+**6d. load vectors to the patients table**
+```shell
+./3-loadvectors.sh sample
+```
+
+**6e. View sample rows from the PATIENTS table**
+```sql
+SELECT * FROM PATIENTS FETCH FIRST 5 ROWS ONLY;
+```
+
+**6f. vector dimension**
+```sql
+SELECT NAME, VECTOR_LEN(VECTOR) FROM PATIENTS FETCH FIRST 3 ROWS ONLY;
+```
+
+**6g. vector distance**
+```sql
+SELECT NAME, AGE, GENDER, CHOLESTEROL_LEVEL, SMOKING_STATUS, VECTOR_DISTANCE((SELECT VECTOR FROM PATIENTS WHERE PATIENT_ID = 2), VECTOR) as SIMILARITY
+FROM PATIENTS
+WHERE PATIENT_ID <> 2
+ORDER BY SIMILARITY DESC
+FETCH FIRST 3 ROWS ONLY
+```
+
+**6h. unpack vector**
+```sql
+SELECT NAME, VEC_TO_CHAR(VECTOR) as VECTOR FROM PATIENTS WHERE PATIENT_ID = 2
+```
+
+
+
+
 
 
 
