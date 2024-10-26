@@ -87,7 +87,7 @@ Login to your VM as `db2inst1` using the password that your instructor has given
 
 2. Download lab code from db2ml-labs repo:
 ```shell
-git clone https://github.com/shaikhq/db2ml-labs.git
+git clone -b branch_name --idugemea2024 https://github.com/shaikhq/db2ml-labs.git
 ```
 
 3. Type `ls` to see the git repo folder, `db2ml-labs`, that you just downloaded. 
@@ -113,3 +113,10 @@ ls
 procedures for developing a machine learning (ML) model.
 
 - `module2-vectors` directory has the content of the second lab where you'll implement a vector similarity search use case with Db2.
+
+## Misc.
+Resetting local git repo with remote repo:
+```shell
+git fetch --all
+git reset --hard origin/main
+```
