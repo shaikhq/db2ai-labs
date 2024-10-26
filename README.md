@@ -23,8 +23,7 @@ It will take a couple minutes to submit the form and get an IBM id.
 Once you have an IBM id and its password, go to the next step. 
 
 ## 2. Accessing Your Workshop VM
-Go to workshop attendee's page by either clicking [this](https://techzone.ibm.com/my/workshops/student/6710247b242dbc7351ebe218) or typing on your browser https://ibm.biz/idug2024
-
+Go to workshop attendee's page by either clicking [this](https://techzone.ibm.com/my/workshops/student/6710247b242dbc7351ebe218) link.
 
 It will ask you to sign in using your IBM id and password. Enter your IBM credentails and log in. After you reach the Workshop Attendee's page, you will see the following form. In this form, enter the workshop access code that you received from your instructor and click `Submit password/access code` button. 
 
@@ -137,6 +136,10 @@ ls
 procedures for developing a machine learning (ML) model.
 
 - `module2-vectors` directory has the content of the second lab where you'll implement a vector similarity search use case with Db2.
+
+# 5 Module 1: Building a Linear Regression Model using in-database machine learning stored procedures at Db2
+
+
 
 ## Misc - No Action Needed
 Resetting local git repo with remote repo:
