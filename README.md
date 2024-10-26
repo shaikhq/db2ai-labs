@@ -48,6 +48,10 @@ Clicking the blue console link will launch the following login window to your wo
 
 From this expanded login window, log in as db2inst1 user with the password that your instructor has provided you. 
 
+In case you don't see the login usernames, instead see a bluescreen like the following, click anywhere in the blue area of this window and press `esc` from your keyword. This will bring up the list of users, including `db2inst11`. 
+
+![alt text](image.png)
+
 ## 3. Setting up your VM
 Now, you're inside your VM GUI. 
 
