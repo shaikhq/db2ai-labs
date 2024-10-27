@@ -331,7 +331,7 @@ db2 -t
 
 **6. At the db2 command line, connect to the sample database**
 ```sql
-connect to sample
+connect to sample;
 ```
 
 **7 Now, at the db2 command line, run the following commands:**
@@ -352,12 +352,12 @@ SELECT NAME, AGE, GENDER, CHOLESTEROL_LEVEL, SMOKING_STATUS, VECTOR_DISTANCE((SE
 FROM PATIENTS
 WHERE PATIENT_ID <> 2
 ORDER BY SIMILARITY DESC
-FETCH FIRST 3 ROWS ONLY
+FETCH FIRST 3 ROWS ONLY;
 ```
 
 **7d. unpack vector**
 ```sql
-SELECT NAME, VEC_TO_CHAR(VECTOR) as VECTOR FROM PATIENTS WHERE PATIENT_ID = 2
+SELECT NAME, VEC_TO_CHAR(VECTOR) as VECTOR FROM PATIENTS WHERE PATIENT_ID = 2;
 ```
 
 **7e. disconnect from Db2 command line tool**
