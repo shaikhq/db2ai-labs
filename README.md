@@ -139,7 +139,17 @@ At the `module1-idax` folder, run the following script to create the Db2 table a
 ./dbsetup.sh banking
 ```
 
-Now, run the following series commands for the current exercise:
+**Using terminal, connect to Db2 command line tool in multiline mode:**
+```shell
+db2 -t
+```
+
+**At Db2 command line tool, connect to the banking database**
+```sql
+connect to banking
+```
+
+Now, at the db2 command line, run the following series commands for the current exercise:
 
 **1. Train / Test Split**
 ```sql
@@ -268,44 +278,66 @@ SELECT avg(abs(A.PURCHASE_AMOUNT - B.PURCHASE_AMOUNT) / A.PURCHASE_AMOUNT * 100)
 ```
 
 **7. Dropping the model**
+**Drop:**
 ```sql
 CALL IDAX.DROP_MODEL('model=GOSALES_LINREG');
+```
+
+**Confirming that the model was dropped:**
+```sql
 CALL IDAX.LIST_MODELS('format=short, all=true');
 ```
 
+**Quit from Db2 command line tool**
+```sql
+quit;
+```
+
 ## 6. Module 2 - Vectors with Db2
-**6a. Navigate to module 2 lab folder**
+**1. Navigate to module 2 lab folder**
 ****
 ```shell
 cd ~/db2ml-labs/module2-vectors
 ```
 
-**6b. setup patient table - create table and load data**
+**2. setup patient table - create table and load data**
 ```shell
 ./1-dbsetup.sh sample
 ```
 
-**6c. build and register vector user-defined functions (UDFs)**
+**3. build and register vector user-defined functions (UDFs)**
 ```shell
 ./2-buildudfs.sh sample
 ```
 
-**6d. load vectors to the patients table**
+**4. load vectors to the patients table**
 ```shell
 ./3-loadvectors.sh sample
 ```
 
-**6e. View sample rows from the PATIENTS table**
+**5. Using terminal, launch db2 command line with multiline support**
+```shell
+db2 -t
+```
+
+**6. At the db2 command line, connect to the sample database**
+```sql
+connect to sample
+```
+
+**7 Now, at the db2 command line, run the following commands:**
+
+**7a. View sample rows from the PATIENTS table**
 ```sql
 SELECT * FROM PATIENTS FETCH FIRST 5 ROWS ONLY;
 ```
 
-**6f. vector dimension**
+**7b. vector dimension**
 ```sql
 SELECT NAME, VECTOR_LEN(VECTOR) FROM PATIENTS FETCH FIRST 3 ROWS ONLY;
 ```
 
-**6g. vector distance**
+**7c. vector distance**
 ```sql
 SELECT NAME, AGE, GENDER, CHOLESTEROL_LEVEL, SMOKING_STATUS, VECTOR_DISTANCE((SELECT VECTOR FROM PATIENTS WHERE PATIENT_ID = 2), VECTOR) as SIMILARITY
 FROM PATIENTS
@@ -314,14 +346,15 @@ ORDER BY SIMILARITY DESC
 FETCH FIRST 3 ROWS ONLY
 ```
 
-**6h. unpack vector**
+**7d. unpack vector**
 ```sql
 SELECT NAME, VEC_TO_CHAR(VECTOR) as VECTOR FROM PATIENTS WHERE PATIENT_ID = 2
 ```
 
-
-
-
+**7e. disconnect from Db2 command line tool**
+```sql
+quit;
+```
 
 
 
