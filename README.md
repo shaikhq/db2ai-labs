@@ -128,9 +128,9 @@ procedures for developing a machine learning (ML) model.
 
 # 5 Module 1: Building a Linear Regression Model using in-database machine learning stored procedures at Db2
 
-Navigate to ~/$HOME/db2ml-labs/module1-idax:
+Navigate to ~/db2ml-labs/module1-idax:
 ```shell
-cd ~/$HOME/db2ml-labs/module1-idax
+cd ~/db2ml-labs/module1-idax
 ```
 
 At the `module1-idax` folder, run the following script to create the Db2 table and load data into it for the current exercise. 
@@ -277,7 +277,7 @@ CALL IDAX.LIST_MODELS('format=short, all=true');
 **6a. Navigate to module 2 lab folder**
 ****
 ```shell
-cd $HOME/db2ml-labs/module2-vectors
+cd ~/db2ml-labs/module2-vectors
 ```
 
 **6b. setup patient table - create table and load data**
