@@ -132,6 +132,11 @@ procedures for developing a machine learning (ML) model.
 
 # 5 Module 1: Building a Linear Regression Model using in-database machine learning stored procedures at Db2
 
+For a complete explaination of this lab steps, you may check out this article. 
+[Step-by-Step Guide to Building a Linear Regression Model inside IBM Db2
+](
+https://community.ibm.com/community/user/datamanagement/blogs/shaikh-quader/2024/05/07/building-an-in-db-linear-regression-model-with-ibm)
+
 Navigate to ~/db2ml-labs/module1-idax:
 ```shell
 cd ~/db2ml-labs/module1-idax
