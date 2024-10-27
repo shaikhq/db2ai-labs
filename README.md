@@ -3,6 +3,8 @@
 ## 1. Requesting an IBM id
 Go to this page and register for an IBMid: [Create an IBMid](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776)
 
+If you already have an IBMid, you can skip ahead to the next section (step 2).
+
 You'll you fill in a 2-page form and submit the form. It doesn't require any credit card to get an IBM id. 
 
 Complete page 1 of the IBM id request form and click next. Here's a screenshot of page 1. 
