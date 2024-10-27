@@ -49,7 +49,7 @@ From this expanded login window, log in as db2inst1 user with the password that 
 
 In case you don't see the login usernames, instead see a bluescreen like the following, click anywhere in the blue area of this window and press `esc` from your keyword. This will bring up the list of users, including `db2inst11`. 
 
-![alt text](image.png)
+![alt text](images/image-21.png)
 
 ## 3. Setting up your VM
 Now, you're inside your VM GUI. 
@@ -82,11 +82,11 @@ You'll see window asking you to confirm that you want to reboot the VM. Confirm 
 
 Wait for 15-20 seconds for reboot to complete. Once the reboot completes, click the `Full screen` button to open the VM in a full screen model. In full screen mode, log into the VM as `db2inst1`. 
 
-![alt text](image-6.png)
+![alt text](images/image-19.png)
 
 From the VM's desktop, go to `Applications` -> `Favorite` -> `Firefox` as follows:
 
-![alt text](image-7.png)
+![alt text](images/image-20.png)
 
 Using firefox, open ibm.biz/idug2024
 
@@ -146,7 +146,7 @@ db2 -t
 
 **At Db2 command line tool, connect to the banking database**
 ```sql
-connect to banking
+connect to banking;
 ```
 
 Now, at the db2 command line, run the following series commands for the current exercise:
