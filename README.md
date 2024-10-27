@@ -5,7 +5,7 @@ Go to this page and register for an IBMid: [Create an IBMid](https://www.ibm.com
 
 You'll you fill in a 2-page form and submit the form. It doesn't require any credit card to get an IBM id. 
 
-Complete page 1 of the IBM id request form and click next. 
+Complete page 1 of the IBM id request form and click next. Here's a screenshot of page 1. 
 ![alt text](images/image-16.png)
 
 After you clicking next on page 1, the registration process will send a 7 digit verification token to the email address you entered on page 1. Copy that token and enter this on the 2nd page of the registration form below and click `Submit`.
