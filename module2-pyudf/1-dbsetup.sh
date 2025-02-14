@@ -20,6 +20,6 @@ db2 -tvf createtb.sql
 db2 "LOAD FROM FLIGHTS_TRAIN.del OF DEL INSERT INTO FLIGHTS_TRAIN"
 db2 "LOAD FROM FLIGHTS_TEST.del OF DEL INSERT INTO FLIGHTS_TEST"
 
-db2 update dbm cfg using python_path /usr/local/bin/python3.12
+db2 update dbm cfg using python_path /usr/local/bin/python3
 
 db2 "CONNECT RESET"
