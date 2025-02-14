@@ -5,6 +5,10 @@ Python UDF is a feature in IBM Db2 that allows users to incorporate their own Py
 ## Database setup
 Set up your Db2 database for this exercise as per the instructions in [this](database-setup/README.md) file. 
 
+```shell
+db2 update dbm cfg using python_path /usr/bin/python3
+```
+
 ## Python Project Setup
 1. Create a new project folder at VSCode. Give it a name `db2-pythonudf-tutorial`.
 ![alt text](images/image.png)
