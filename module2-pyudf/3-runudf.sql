@@ -1,7 +1,9 @@
+CONNECT TO DB2AI;
+
 SELECT f.*
 FROM FLIGHTS_TEST i, 
      TABLE(
-         MYUDF_LR(
+         MYUDF(
              (SELECT COUNT(*) FROM FLIGHTS_TEST),
              i."YEAR",
              i."QUARTER",
@@ -22,3 +24,5 @@ FROM FLIGHTS_TEST i,
              i."DISTANCEGROUP"
          )
      ) f;
+
+CONNECT RESET;

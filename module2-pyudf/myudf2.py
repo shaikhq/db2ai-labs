@@ -7,7 +7,7 @@ import nzae
 import pandas as pd
 from joblib import load
 
-ml_model_path = {joblib_file_path}
+ml_model_path = '/home/db2inst1/db2ai-labs1/module2-pyudf/myudf.joblib'
 ml_model_features = ['YEAR', 'QUARTER', 'MONTH', 'DAYOFMONTH', 'DAYOFWEEK', 'UNIQUECARRIER', 'ORIGIN', 'DEST', 'CRSDEPTIME', 'DEPDELAY', 'DEPDEL15', 'TAXIOUT', 'WHEELSOFF', 'CRSARRTIME', 'CRSELAPSEDTIME', 'AIRTIME', 'DISTANCEGROUP']
 
 class full_pipeline(nzae.Ae):
@@ -59,3 +59,4 @@ class full_pipeline(nzae.Ae):
                 rownum=0
         self.done()
 full_pipeline.run()
+    

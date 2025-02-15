@@ -1,5 +1,4 @@
-
-CONNECT TO DB2AI;
+CONNECT TO db2ai;
 
 DROP FUNCTION MYUDF_LR;
 
@@ -54,6 +53,6 @@ DETERMINISTIC
 NO EXTERNAL ACTION 
 CALLED ON NULL INPUT  
 NO SQL 
-EXTERNAL NAME '{udf_file_path}';
+EXTERNAL NAME '/home/db2inst1/db2ai-labs/module2-pyudf/solution/myudf_lr.py';
 
 CONNECT RESET;
