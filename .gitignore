@@ -1,1 +1,8 @@
-db2con.env
+# Ignore virtual environments (any subdir)
+venv/
+**/venv/
+
+# Ignore db2.conf files (any subdir)
+db2.conf
+**/db2.conf
+

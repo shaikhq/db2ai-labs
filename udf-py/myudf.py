@@ -15,7 +15,7 @@ class full_pipeline(nzae.Ae):
         ### INITIALIZATON ###
         #####################
     
-        trained_pipeline = load('/home/shaikhq/pipe_lr/pipe_lr.joblib')
+        trained_pipeline = load('/home/db2inst1/db2ai-labs/udf-py/myudf.joblib')
         
         #######################
         ### DATA COLLECTION ###

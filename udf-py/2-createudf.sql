@@ -53,6 +53,6 @@ DETERMINISTIC
 NO EXTERNAL ACTION 
 CALLED ON NULL INPUT  
 NO SQL 
-EXTERNAL NAME '/home/db2inst1/db2ai-labs/module2-pyudf/myudf.py';
+EXTERNAL NAME '/home/db2inst1/db2ai-labs/udf-py/myudf.py';
 
 CONNECT RESET;

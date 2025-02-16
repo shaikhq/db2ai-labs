@@ -1,0 +1,62 @@
+# Building C User Defined Functions (UDFs) with IBM Db2
+**1. Navigate to module 2 lab folder**
+****
+```shell
+cd ~/db2ai-labs/udf-c
+```
+
+**2. setup patient table - create table and load data**
+```shell
+./1-dbsetup.sh db2ai
+```
+
+**3. build and register vector user-defined functions (UDFs)**
+```shell
+./2-buildudfs.sh db2ai
+```
+
+**4. load vectors to the patients table**
+```shell
+./3-loadvectors.sh db2ai
+```
+
+**5. Using terminal, launch db2 command line with multiline support**
+```shell
+db2 -t
+```
+
+**6. At the db2 command line, connect to the sample database**
+```sql
+connect to db2ai;
+```
+
+**7 Now, at the db2 command line, run the following commands:**
+
+**7a. View sample rows from the PATIENTS table**
+```sql
+SELECT * FROM PATIENTS FETCH FIRST 5 ROWS ONLY;
+```
+
+**7b. vector dimension**
+```sql
+SELECT NAME, VECTOR_LEN(VECTOR) FROM PATIENTS FETCH FIRST 3 ROWS ONLY;
+```
+
+**7c. vector distance**
+```sql
+SELECT NAME, AGE, GENDER, CHOLESTEROL_LEVEL, SMOKING_STATUS, VECTOR_DISTANCE((SELECT VECTOR FROM PATIENTS WHERE PATIENT_ID = 2), VECTOR) as SIMILARITY
+FROM PATIENTS
+WHERE PATIENT_ID <> 2
+ORDER BY SIMILARITY DESC
+FETCH FIRST 3 ROWS ONLY;
+```
+
+**7d. unpack vector**
+```sql
+SELECT NAME, VEC_TO_CHAR(VECTOR) as VECTOR FROM PATIENTS WHERE PATIENT_ID = 2;
+```
+
+**7e. disconnect from Db2 command line tool**
+```sql
+quit;
+```
