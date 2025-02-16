@@ -3,6 +3,6 @@ venv/
 **/venv/
 
 # Ignore db2.conf files (any subdir)
-db2.conf
-**/db2.conf
+db2conf.env
+**/db2conf.env
 
