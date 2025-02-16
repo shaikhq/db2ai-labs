@@ -5,7 +5,7 @@
 git clone https://github.com/shaikhq/db2ai-labs.git
 ```
 
-**2. Navigate to module 2 lab folder**
+**2. Navigate to the `udf-c` lab folder**
 ****
 ```shell
 cd ~/db2ai-labs/udf-c
