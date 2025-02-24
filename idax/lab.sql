@@ -1,3 +1,5 @@
+CONNECT TO DB2AI;
+
 -- 1. Train / Test Split
 CALL IDAX.SPLIT_DATA('intable=GOSALES, id=ID, traintable=GOSALES_TRAIN, testtable=GOSALES_TEST, fraction=0.8, seed=1');
 
