@@ -1,3 +1,5 @@
+CONNECT TO DB2AI;
+
 -- 1. Train / Test Split
 CALL IDAX.SPLIT_DATA('intable=GOSALES, id=ID, traintable=GOSALES_TRAIN, testtable=GOSALES_TEST, fraction=0.8, seed=1');
 
@@ -76,3 +78,5 @@ SELECT avg(abs(A.PURCHASE_AMOUNT - B.PURCHASE_AMOUNT) / A.PURCHASE_AMOUNT * 100)
 --- 7. Dropping the model
 CALL IDAX.DROP_MODEL('model=GOSALES_LINREG');
 CALL IDAX.LIST_MODELS('format=short, all=true');
+
+CONNECT RESET;

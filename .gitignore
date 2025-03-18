@@ -1,8 +1,10 @@
 # Ignore virtual environments (any subdir)
 venv/
 **/venv/
+myvenv/
+**/myvenv/
 
 # Ignore db2.conf files (any subdir)
 db2conf.env
 **/db2conf.env
-
+*.pickle

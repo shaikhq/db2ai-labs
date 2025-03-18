@@ -1,3 +1,8 @@
+nbformat
+ipykernel
+itables
+pandas
+scikit-learn
 matplotlib
 seaborn
 scikit-image
@@ -6,6 +11,4 @@ wget
 QGRID
 multiprocess
 ibm_db
-pydatagrid
 python-dotenv
-scikit-learn
