@@ -1,4 +1,4 @@
-# IDUG Australia 2025 - Db2 Machine Learning Workshop Instructions
+# IDUG NA 2025 - Db2 Machine Learning Workshop Instructions
 
 ## 1. Requesting an IBM id
 Go to this page and register for an IBMid: [Create an IBMid](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776)
